@@ -1,8 +1,34 @@
-# React + Vite
+# Weather Whimsy App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Weather Whimsy App](https://github.com/CocoShesh/Weather_App/assets/110368170/107f0838-70a3-49e1-a9e0-79df20616766)
 
-Currently, two official plugins are available:
+## Description
+Weather Whimsy App is a simple and elegant weather application built using ReactJS and styled with Tailwind CSS. It utilizes the Google Fonts library for typography and is developed in Visual Studio Code. The app fetches weather data from the weatherapi.com API to provide accurate forecasts.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- View current weather conditions
+- Check weekly weather forecasts
+- Toggle between Celsius and Fahrenheit
+- Dark mode option for comfortable viewing
+- Responsive design for seamless experience across all devices
+
+## Technologies Used
+- ReactJS
+- Tailwind CSS
+- Google Fonts
+- Visual Studio Code
+- weatherapi.com API
+
+## Usage
+1. Clone the repository.
+2. Navigate to the project directory.
+3. Run `npm install` to install dependencies.
+4. Run `npm start` to start the development server.
+5. Access the app in your browser at `http://localhost:3000`.
+
+## Credits
+- Weather data provided by [weatherapi.com](https://www.weatherapi.com/)
+- Developed by Nard
+
+## License
+This project is licensed under the [MIT License](LICENSE).
