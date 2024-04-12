@@ -6,10 +6,10 @@ export const useToggle = () => {
   return useContext(toggleThemeContext);
 };
 export const ToggleThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(false);
 
   const toggleTheme = () => {
-    setTheme(prev => (prev === "light" ? "dark" : "light"));
+    setTheme(document.documentElement.classList.toggle("dark"));
   };
   return (
     <toggleThemeContext.Provider value={{ toggleTheme, theme }}>

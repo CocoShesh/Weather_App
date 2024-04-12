@@ -11,7 +11,6 @@ const MainContent = () => {
     extraDetails,
     setExtraDetails,
     weatherTypeToggle,
-    isLoading,
     handleWeatherTypeToggle,
   } = useUserInputContext();
   const { theme, toggleTheme } = useToggle();
@@ -45,26 +44,22 @@ const MainContent = () => {
 
   return (
     <>
-      <section
-        className={`w-full rounded-r-[2.5rem]  ${
-          theme === "dark" ? "bg-[#343434] text-white" : "bg-[#f6f6f8]"
-        }  h-auto  2xl:h-[800px]  max-xl:rounded-2xl  lg:pb-5 px-10 max-xl:p-5 `}
-      >
+      <section className="w-full rounded-r-[2.5rem]  bg-[#f6f6f8] dark:bg-[#343434] dark:text-white h-auto  2xl:h-[800px]  max-xl:rounded-2xl  lg:pb-5 px-10 max-xl:p-5 ">
         <section className="flex pt-5 pr-3 h-7">
           <section className="ml-auto flex items-center mt-5 gap-3 ">
             <section>
-              {theme === "light" ? (
-                <img
-                  src="/icon-moon.svg"
-                  className="cursor-pointer h-7"
-                  alt="moon-icon"
-                  onClick={toggleTheme}
-                />
-              ) : (
+              {theme ? (
                 <img
                   src="/icon-sun.svg"
                   className="cursor-pointer"
                   alt="sun-icon"
+                  onClick={toggleTheme}
+                />
+              ) : (
+                <img
+                  src="/icon-moon.svg"
+                  className="cursor-pointer h-7"
+                  alt="moon-icon"
                   onClick={toggleTheme}
                 />
               )}
@@ -97,9 +92,7 @@ const MainContent = () => {
             return (
               <section
                 key={index}
-                className={`rounded-xl   ${
-                  theme === "dark" ? "bg-[#27272a] text-white" : "bg-white"
-                }  py-2 text-center flex flex-col items-center justify-center select-none`}
+                className="rounded-xl bg-white dark:bg-[#27272a] py-2 text-center flex flex-col items-center justify-center select-none"
               >
                 <h1>{item.dayName}</h1>
                 <img src={item.icon} alt="" />
@@ -113,24 +106,15 @@ const MainContent = () => {
           })}
         </section>
 
-        {/* Highlights Section*/}
         <section className="mt-10 select-none  ">
           <h1 className="text-xl "> Today's Highlights</h1>
           <section className="grid 2xl:grid-cols-3 gap-5 mt-5 lg:grid-cols-3 md:grid-cols-2  2xl:h-full ">
-            <section
-              className={`rounded-xl   ${
-                theme === "dark" ? "bg-[#27272a] text-white" : "bg-white"
-              }   pt-3   h-full  2xl:h-[230px]`}
-            >
+            <section className="rounded-xl    bg-white dark:bg-[#27272a]  pt-3   h-full  2xl:h-[230px]">
               <span className="text-[#a8a8a8] ml-5 "> Uv Index</span>
 
               <GaugeChart setValue={extraDetails?.uv} />
             </section>
-            <section
-              className={`rounded-xl py-5  ${
-                theme === "dark" ? "bg-[#27272a] text-white" : "bg-white"
-              }   h-full flex flex-col justify-between  2xl:h-[230px] 2xl:text-2xl px-6 `}
-            >
+            <section className="rounded-xl py-5      bg-white dark:bg-[#27272a]  h-full flex flex-col justify-between  2xl:h-[230px] 2xl:text-2xl px-6 ">
               <span className="text-[#a8a8a8]">Wind Status</span>
               <h1 className="text-6xl mt-5">
                 {weather?.current?.wind_kph}
@@ -142,11 +126,7 @@ const MainContent = () => {
                 <span> {weather?.current?.wind_dir}</span>
               </section>
             </section>
-            <section
-              className={` rounded-xl  py-5  ${
-                theme === "dark" ? "bg-[#27272a] text-white" : "bg-white"
-              }  h-full  2xl:h-[230px]  px-6`}
-            >
+            <section className="rounded-xl  py-5     bg-white dark:bg-[#27272a]  h-full  2xl:h-[230px]  px-6">
               <span className="text-[#a8a8a8]">Sunrise & Sunset</span>
               <section className="flex items-center gap-3 my-5 2xl:text-2xl font-semibold">
                 <img
@@ -165,11 +145,7 @@ const MainContent = () => {
                 <h1> {extraDetails?.sunset}</h1>
               </section>
             </section>
-            <section
-              className={` rounded-xl  flex flex-col justify-between relative w-full  ${
-                theme === "dark" ? "bg-[#27272a] text-white" : "bg-white"
-              }    py-5 2xl:h-[200px] h-[200px]  px-6`}
-            >
+            <section className="rounded-xl  flex flex-col justify-between relative w-full   bg-white dark:bg-[#27272a] py-5 2xl:h-[200px] h-[200px]  px-6">
               <span className="text-[#a8a8a8]">Humidity</span>
               <h1 className="text-5xl ">
                 {weather?.current?.humidity}
@@ -184,11 +160,7 @@ const MainContent = () => {
                 </div>
               </section>
             </section>
-            <section
-              className={` rounded-xl flex justify-between flex-col  ${
-                theme === "dark" ? "bg-[#27272a] text-white" : "bg-white"
-              }   py-5 h-[200px]  2xl:h-[200px]  px-6`}
-            >
+            <section className=" rounded-xl flex justify-between flex-col   bg-white dark:bg-[#27272a] py-5 h-[200px]  2xl:h-[200px]  px-6">
               <span className="text-[#a8a8a8]">Visibility</span>
               <h1 className="text-5xl ">
                 {extraDetails?.avgvis_km} <span className="text-2xl"> km </span>
@@ -197,11 +169,7 @@ const MainContent = () => {
                 {getVisibilityClassification(extraDetails?.avgvis_km)}
               </span>
             </section>
-            <section
-              className={` rounded-xl flex justify-between relative flex-col ${
-                theme === "dark" ? "bg-[#27272a] text-white" : "bg-white"
-              }   py-5 h-[200px]   2xl:h-[200px]  px-6`}
-            >
+            <section className="rounded-xl flex justify-between relative flex-col  bg-white dark:bg-[#27272a] py-5 h-[200px]   2xl:h-[200px]  px-6">
               <section className="flex justify-between   h-full flex-col">
                 <span className="text-[#a8a8a8]">Air Quality</span>
                 <h1 className="text-5xl ">{extraDetails?.air_quality} </h1>

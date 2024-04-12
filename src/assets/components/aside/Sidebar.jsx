@@ -9,7 +9,6 @@ const Sidebar = () => {
   const { handleUserInput, weather, extraDetails, weatherTypeToggle } =
     useUserInputContext();
 
-  const { theme } = useToggle();
   const lastUpdatedDate = new Date(weather?.current?.last_updated);
   const dayName = new Date(lastUpdatedDate).toLocaleDateString("en-US", {
     weekday: "long",
@@ -22,9 +21,8 @@ const Sidebar = () => {
   return (
     <>
       <aside
-        className={`w-[450px] h-[700px] 2xl:h-[800px] max-xl:w-full max-xl:rounded-2xl p-8 max-lg:p-5 select-none ${
-          theme === "dark" ? "bg-[#27272a] text-white" : "bg-white"
-        }  flex flex-col justify-between  lg:h-auto rounded-l-[2.5rem] `}
+        className="w-[450px] h-[700px] 2xl:h-[800px] max-xl:w-full max-xl:rounded-2xl p-8 max-lg:p-5 select-none  bg-white dark:bg-[#27272a] dark:text-white
+        flex flex-col justify-between  lg:h-auto rounded-l-[2.5rem] "
       >
         <section>
           <section className="flex justify-between items-center">
@@ -32,20 +30,12 @@ const Sidebar = () => {
               <input
                 type="text"
                 placeholder="Search for places..."
-                className={`w-full h-10 pl-8 placeholder:font-bold ${
-                  theme === "dark"
-                    ? "bg-[#27272a] text-white"
-                    : "bg-transparent"
-                }  outline-none text-[#696969]  font-semibold `}
+                className="w-full h-10 pl-8 placeholder:font-bold  bg-white dark:bg-[#27272a] outline-none text-[#696969]  font-semibold "
                 onKeyPress={handleUserInput}
               />
               <GrFormSearch className="absolute top-2 left-1   text-2xl" />
             </section>
-            <section
-              className={`w-fit h-fit   ${
-                theme === "dark" ? "bg-[#27272a] text-white" : "bg-[#f6f6f8]"
-              } p-2 rounded-full text-lg `}
-            >
+            <section className="w-fit h-fit   bg-white dark:bg-[#27272a] p-2 rounded-full text-lg ">
               <LuCrosshair />{" "}
             </section>
           </section>
